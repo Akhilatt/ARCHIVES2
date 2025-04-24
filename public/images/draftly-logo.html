@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draftly Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .logo-container {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .paper {
+            width: 320px;
+            height: 400px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e3e8ff 100%);
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transform: rotate(-3deg);
+        }
+        
+        .paper:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                transparent,
+                transparent 25px,
+                rgba(66, 93, 255, 0.1) 25px,
+                rgba(66, 93, 255, 0.1) 26px
+            );
+        }
+        
+        .paper-top {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70px;
+            height: 70px;
+            background-color: #4f46e5;
+            transform: translate(25px, -25px) rotate(45deg);
+        }
+        
+        .text-line {
+            position: absolute;
+            height: 8px;
+            border-radius: 4px;
+            background-color: rgba(79, 70, 229, 0.2);
+        }
+        
+        .text-line:nth-child(1) {
+            width: 70%;
+            top: 80px;
+            left: 40px;
+        }
+        
+        .text-line:nth-child(2) {
+            width: 60%;
+            top: 120px;
+            left: 40px;
+        }
+        
+        .text-line:nth-child(3) {
+            width: 80%;
+            top: 160px;
+            left: 40px;
+        }
+        
+        .text-line:nth-child(4) {
+            width: 65%;
+            top: 200px;
+            left: 40px;
+        }
+        
+        .text-line:nth-child(5) {
+            width: 75%;
+            top: 240px;
+            left: 40px;
+        }
+        
+        .paper-alternate {
+            width: 320px;
+            height: 400px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #dce4ff 100%);
+            border-radius: 20px;
+            position: absolute;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: rotate(3deg) translate(20px, -10px);
+            z-index: -1;
+        }
+        
+        .paper-alternate:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                transparent,
+                transparent 25px,
+                rgba(66, 93, 255, 0.05) 25px,
+                rgba(66, 93, 255, 0.05) 26px
+            );
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            top: 30px;
+            right: 40px;
+            color: #4f46e5;
+            z-index: 2;
+        }
+        
+        .logo-text {
+            position: absolute;
+            bottom: 50px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            font-size: 48px;
+            color: #4f46e5;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <!-- Alternate paper in background -->
+        <div class="paper-alternate"></div>
+        
+        <!-- Main paper with lines -->
+        <div class="paper">
+            <div class="paper-top"></div>
+            <div class="text-line"></div>
+            <div class="text-line"></div>
+            <div class="text-line"></div>
+            <div class="text-line"></div>
+            <div class="text-line"></div>
+            
+            <!-- Sparkle icon -->
+            <svg class="sparkle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        
+        <!-- Logo text -->
+        <div class="logo-text">Draftly</div>
+    </div>
+    
+    <script>
+        // You can take a screenshot of this in the browser to create an image file
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Logo ready for screenshot');
+        });
+    </script>
+</body>
+</html> 

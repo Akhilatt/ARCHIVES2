@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Draftly PNG Logo</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #4338ca;
+        }
+    </style>
+</head>
+<body>
+    <h1>Draftly Logo Generator</h1>
+    <canvas id="logoCanvas" width="500" height="500"></canvas>
+    <button id="downloadButton">Download PNG</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('logoCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Draw the logo
+            drawLogo(ctx, canvas.width, canvas.height);
+
+            // Set up download button
+            document.getElementById('downloadButton').addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.download = 'draftly-logo.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+
+        function drawLogo(ctx, width, height) {
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+
+            // Background
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, width, height);
+
+            // Save state for transformations
+            ctx.save();
+            ctx.translate(width/2, height/2);
+
+            // Draw background paper (rotated slightly)
+            ctx.save();
+            ctx.rotate(3 * Math.PI / 180); // 3 degrees rotation
+            createPaper(ctx, '#f0f4ff', 320, 400);
+            ctx.restore();
+
+            // Draw main paper (rotated slightly in the opposite direction)
+            ctx.save();
+            ctx.rotate(-3 * Math.PI / 180); // -3 degrees rotation
+            createPaper(ctx, '#f5f7ff', 320, 400);
+            
+            // Add text lines
+            ctx.fillStyle = 'rgba(79, 70, 229, 0.2)';
+            drawRoundedRect(ctx, -160, -140, 200, 8, 4);
+            drawRoundedRect(ctx, -160, -100, 170, 8, 4);
+            drawRoundedRect(ctx, -160, -60, 220, 8, 4);
+            drawRoundedRect(ctx, -160, -20, 190, 8, 4);
+            drawRoundedRect(ctx, -160, 20, 205, 8, 4);
+            
+            // Add folded corner
+            ctx.fillStyle = '#4f46e5';
+            ctx.beginPath();
+            ctx.moveTo(160, -200);
+            ctx.lineTo(160, -130);
+            ctx.lineTo(90, -200);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Add sparkle
+            drawSparkle(ctx, 100, -150, 25);
+            
+            ctx.restore();
+            
+            // Add logo text
+            ctx.font = 'bold 48px Arial, sans-serif';
+            ctx.fillStyle = '#4f46e5';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Draftly', 0, 180);
+            
+            // Restore original state
+            ctx.restore();
+        }
+        
+        function createPaper(ctx, color, width, height) {
+            const x = -width / 2;
+            const y = -height / 2;
+            const radius = 20;
+            
+            // Paper with shadow
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.1)';
+            ctx.shadowBlur = 15;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 10;
+            
+            // Draw rounded rectangle
+            ctx.fillStyle = color;
+            drawRoundedRect(ctx, x, y, width, height, radius);
+            
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            
+            // Add subtle paper lines
+            ctx.strokeStyle = 'rgba(79, 70, 229, 0.1)';
+            ctx.lineWidth = 1;
+            
+            for (let i = -150; i <= 100; i += 30) {
+                ctx.beginPath();
+                ctx.moveTo(x + 20, y + height/2 + i);
+                ctx.lineTo(x + width - 20, y + height/2 + i);
+                ctx.stroke();
+            }
+        }
+        
+        function drawRoundedRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.arcTo(x + width, y, x + width, y + radius, radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius);
+            ctx.lineTo(x + radius, y + height);
+            ctx.arcTo(x, y + height, x, y + height - radius, radius);
+            ctx.lineTo(x, y + radius);
+            ctx.arcTo(x, y, x + radius, y, radius);
+            ctx.closePath();
+            ctx.fill();
+        }
+        
+        function drawSparkle(ctx, x, y, size) {
+            ctx.fillStyle = '#4f46e5';
+            
+            // Main star
+            ctx.beginPath();
+            ctx.moveTo(x, y - size);
+            ctx.lineTo(x + size/3, y - size/3);
+            ctx.lineTo(x + size, y);
+            ctx.lineTo(x + size/3, y + size/3);
+            ctx.lineTo(x, y + size);
+            ctx.lineTo(x - size/3, y + size/3);
+            ctx.lineTo(x - size, y);
+            ctx.lineTo(x - size/3, y - size/3);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Small star
+            const smallSize = size * 0.4;
+            const offset = size * 1.2;
+            
+            ctx.beginPath();
+            ctx.moveTo(x + offset, y - offset);
+            ctx.lineTo(x + offset + smallSize/3, y - offset + smallSize/3);
+            ctx.lineTo(x + offset + smallSize, y - offset);
+            ctx.lineTo(x + offset + smallSize/3, y - offset - smallSize/3);
+            ctx.lineTo(x + offset, y - offset - smallSize);
+            ctx.lineTo(x + offset - smallSize/3, y - offset - smallSize/3);
+            ctx.lineTo(x + offset - smallSize, y - offset);
+            ctx.lineTo(x + offset - smallSize/3, y - offset + smallSize/3);
+            ctx.closePath();
+            ctx.fill();
+        }
+    </script>
+</body>
+</html> 

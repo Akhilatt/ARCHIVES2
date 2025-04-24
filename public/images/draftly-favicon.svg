@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="transparent"/>
+  
+  <!-- Simplified paper with folded corner -->
+  <rect x="8" y="8" width="48" height="48" rx="6" ry="6" fill="#f5f7ff" filter="drop-shadow(0 3px 5px rgba(0,0,0,0.2))"/>
+  
+  <!-- Paper folded corner -->
+  <path d="M56,8 L56,20 L44,8 Z" fill="#4f46e5"/>
+  
+  <!-- Text lines (simplified) -->
+  <rect x="15" y="21" width="34" height="2" rx="1" ry="1" fill="rgba(79, 70, 229, 0.3)"/>
+  <rect x="15" y="27" width="28" height="2" rx="1" ry="1" fill="rgba(79, 70, 229, 0.3)"/>
+  <rect x="15" y="33" width="34" height="2" rx="1" ry="1" fill="rgba(79, 70, 229, 0.3)"/>
+  <rect x="15" y="39" width="30" height="2" rx="1" ry="1" fill="rgba(79, 70, 229, 0.3)"/>
+  
+  <!-- Small sparkle -->
+  <path d="M32,12 L33.5,16 L37.5,17.5 L33.5,19 L32,23 L30.5,19 L26.5,17.5 L30.5,16 Z" fill="#4f46e5"/>
+  
+  <!-- Letter D for Draftly -->
+  <text x="32" y="52" font-family="Arial, sans-serif" font-weight="bold" font-size="20" text-anchor="middle" fill="#4f46e5">D</text>
+</svg> 
